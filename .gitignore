@@ -38,6 +38,7 @@
 
 # "temporary" build files
 /target
+/out
 
 # other
 *.iws
@@ -46,3 +47,4 @@
 *.iml
 
 plugin.xml
+
