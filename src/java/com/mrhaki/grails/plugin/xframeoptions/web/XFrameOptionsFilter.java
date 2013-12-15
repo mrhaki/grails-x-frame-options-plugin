@@ -1,4 +1,6 @@
-package com.mrhaki.grails.plugins.xframeoptions.web;
+package com.mrhaki.grails.plugin.xframeoptions.web;
+
+import static com.mrhaki.grails.plugin.xframeoptions.web.XFrameOptionsHeaderValues.DENY;
 
 import java.io.IOException;
 import java.lang.Override;
@@ -11,6 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 /**
  * <p>
  *     Servlet filter that adds the response header X-FRAME-OPTIONS.
+ *     The header value to be used is passed via the constructor.
  * </p>
  * <p>
  *     More information available at
@@ -28,12 +31,28 @@ public class XFrameOptionsFilter extends OncePerRequestFilter {
     /**
      * Default value to be used when nothing is defined in the configuration.
      */
-    private static final String DEFAULT_MODE = "DENY";
+    private static final String DEFAULT_MODE = DENY;
 
     /**
      * Store mode which is the header value to be used.
      */
-    private String mode = DEFAULT_MODE;
+    private final String headerValue;
+
+    /**
+     * Set defualt header value {@link }
+     */
+    public XFrameOptionsFilter() {
+        this(DEFAULT_MODE);
+    }
+
+    /**
+     * Set header value to be used for the HTTP response header.
+     *
+     * @param headerValue Value for the header.
+     */
+    public XFrameOptionsFilter(final String headerValue) {
+        this.headerValue = headerValue;
+    }
 
     /**
      * Set response header value and continue the filter processing.
@@ -51,10 +70,7 @@ public class XFrameOptionsFilter extends OncePerRequestFilter {
     }
 
     private String headerValue() {
-        return mode.toUpperCase();
+        return headerValue.toUpperCase();
     }
 
-    public void setMode(final String mode) {
-        this.mode = mode;
-    }
 }

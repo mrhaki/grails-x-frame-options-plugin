@@ -44,3 +44,5 @@
 .idea
 *.ipr
 *.iml
+
+plugin.xml
