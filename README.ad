@@ -1,0 +1,59 @@
+= grails-x-frame-options-plugin
+
+Filter to set HTTP response header X-Frame-Options.
+
+More information about X-Frame-Options:
+
+* [OWASP - Defending with X-Frame-Options response headers](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Defending_with_X-Frame-Options_Response_Headers)
+
+== Using
+
+Add a dependency to `grails-app/conf/BuildConfig.groovy`:
+
+----
+...
+plugins {
+    ...
+    runtime (':x-frame-options:1.0')
+    ...
+}
+...
+----
+
+The default configuration installs a servlet filter for the URL pattern `/*` that adds a response
+header `X-Frame-Options` with the value `DENY`.
+
+== Configuration
+
+The plugin is configured through `grails-app/conf/Config.groovy`.
+
+We can limit the URL pattern the filter is applied to:
+
+----
+grails.plugin.xframeoptions.urlPattern = '/path/*'
+----
+
+We can also set multiple patterns:
+
+----
+grails.plugin.xframeoptions.urlPattern = ['/path/*', '/other/*']
+----
+
+We can set different header values based on the configuration.
+To set the header value `DENY` we must use the following configuration:
+
+----
+grails.plugin.xframeoptions.deny = true
+----
+
+To set the header value `SAMEORIGIN` we must use the following configuration:
+
+----
+grails.plugin.xframeoptions.sameOrigin = true
+----
+
+To set the header value `ALLOW-FROM` with a URL we must use the following configuration:
+
+----
+grails.plugin.xframeoptions.allowFrom = 'http://www.mrhaki.com'
+----
