@@ -1,4 +1,4 @@
-= grails-x-frame-options-plugin
+== Grails X-Frame-Options Plugin
 
 Filter to set HTTP response header X-Frame-Options.
 
