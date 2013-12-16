@@ -1,10 +1,11 @@
 == Grails X-Frame-Options Plugin
 
-Filter to set HTTP response header X-Frame-Options.
+Filter to set HTTP response header X-Frame-Options to defend against
+http://en.wikipedia.org/wiki/Clickjacking[ClickJacking].
 
-More information about X-Frame-Options:
+More information about using X-Frame-Options for defending against clickjacking:
 
-* [OWASP - Defending with X-Frame-Options response headers](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Defending_with_X-Frame-Options_Response_Headers)
+* https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Defending_with_X-Frame-Options_Response_Headers[OWASP - Defending with X-Frame-Options response headers]
 
 == Using
 
