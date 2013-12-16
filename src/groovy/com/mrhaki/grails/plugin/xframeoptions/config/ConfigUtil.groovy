@@ -54,7 +54,11 @@ class ConfigUtil {
      * @return True if enabled property is true or no configuration is defined.
      */
     boolean isFilterEnabled() {
-        !config || config.enabled
+        !config || config.enabled || (hasCustomSettings() && !config.enabled)
+    }
+
+    private boolean hasCustomSettings() {
+        config.containsKey('deny') || config.containsKey('sameOrigin') || config.containsKey('allowFrom')
     }
 
     private getConfig() {

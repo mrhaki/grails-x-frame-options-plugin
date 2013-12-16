@@ -28,7 +28,9 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+        test "org.spockframework:spock-grails-support:0.7-groovy-2.0", {
+            export = false
+        }
     }
 
     plugins {
@@ -39,6 +41,7 @@ grails.project.dependency.resolution = {
         compile ":webxml:1.4.1"
 
         test(":spock:0.7") {
+            export = false
             exclude "spock-grails-support"
         }
     }
