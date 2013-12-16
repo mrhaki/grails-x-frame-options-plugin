@@ -48,3 +48,6 @@
 
 plugin.xml
 
+*.zip
+*.sha1
+
