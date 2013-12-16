@@ -26,7 +26,7 @@ public class XFrameOptionsFilter extends OncePerRequestFilter {
     /**
      * Response header name.
      */
-    private static final String HEADER_NAME = "X-FRAME-OPTIONS";
+    private static final String HEADER_NAME = "X-Frame-Options";
 
     /**
      * Default value to be used when nothing is defined in the configuration.
@@ -70,7 +70,7 @@ public class XFrameOptionsFilter extends OncePerRequestFilter {
     }
 
     private String headerValue() {
-        return headerValue.toUpperCase();
+        return headerValue;
     }
 
 }
