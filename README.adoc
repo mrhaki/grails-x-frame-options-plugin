@@ -47,6 +47,9 @@ To set the header value `DENY` we must use the following configuration:
 grails.plugin.xframeoptions.deny = true
 ----
 
+This is also the default value if no configuration is provided or no configuration options
+are set.
+
 To set the header value `SAMEORIGIN` we must use the following configuration:
 
 ----
@@ -58,3 +61,11 @@ To set the header value `ALLOW-FROM` with a URL we must use the following config
 ----
 grails.plugin.xframeoptions.allowFrom = 'http://www.mrhaki.com'
 ----
+
+To disable the filter we must use the following configuration option:
+
+----
+grails.plugin.xframeoptions.enabled = false
+----
+
+The filter is enabled by default and will use the `DENY` header value.
