@@ -9,7 +9,7 @@ import groovy.util.logging.Slf4j
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 
 @Slf4j
-class GrailsPlugin extends Plugin implements GrailsConfigurationAware {
+class XFrameOptionsGrailsPlugin extends Plugin implements GrailsConfigurationAware {
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.2.6 > *"
