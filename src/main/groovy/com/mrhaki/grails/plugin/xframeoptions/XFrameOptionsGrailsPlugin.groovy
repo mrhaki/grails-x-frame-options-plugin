@@ -9,7 +9,7 @@ import groovy.util.logging.Slf4j
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 
 @Slf4j
-class XFrameOptionsGrailsPlugin extends Plugin implements GrailsConfigurationAware {
+class XFrameOptionsGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.2.6 > *"
@@ -70,11 +70,5 @@ class XFrameOptionsGrailsPlugin extends Plugin implements GrailsConfigurationAwa
 
     void onShutdown(Map<String, Object> event) {
         // TODO Implement code that is executed when the application shuts down (optional)
-    }
-
-    @Override
-    void setConfiguration(Config co) {
-
-
     }
 }
