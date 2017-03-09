@@ -48,17 +48,19 @@ bootRun {
 }
 // enable if you wish to package this plugin as a standalone application
 bootRepackage.enabled = false
+
 grailsPublish {
-    // TODO: Provide values here
-    user = 'user'
-    key = 'key'
+    if (project.hasProperty('bintrayUser')) {
+        user = project.property('bintrayUser')
+        key = project.property('bintrayKey')
+    }
     githubSlug = 'mrhaki/grails-x-frame-options-plugin'
     license {
         name = 'Apache-2.0'
     }
     title = "X-Frame-Options Plugin"
     desc = "Servlet filter that adds a X-FRAME-OPTIONS response header"
-    developers = [mrhaki:"Hubert A. Klein Ikkink"]
+    developers = [mrhaki:"Hubert A. Klein Ikkink", sergio:"Sergio del Amo Caballero"]
     portalUser = ""
     portalPassword = ""    
 }

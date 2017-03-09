@@ -19,6 +19,7 @@ class XFrameOptionsGrailsPlugin extends Plugin {
     def title = 'X-Frame-Options Plugin'
     def author = 'Hubert A. Klein Ikkink aka mrhaki'
     def authorEmail = "h.kleinikkink@gmail.com"
+    def developers = [name: "Sergio del Amo Caballero", email: "delamos@objectcomputing.com"]
     def description = 'Servlet filter that adds a X-FRAME-OPTIONS response header.'
 
     def profiles = ['web']
