@@ -7,15 +7,17 @@ More information about using X-Frame-Options for defending against clickjacking:
 
 * https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Defending_with_X-Frame-Options_Response_Headers[OWASP - Defending with X-Frame-Options response headers]
 
-== Using
+== Installation
 
-Add a dependency to `grails-app/conf/BuildConfig.groovy`:
+These instructions are targeted towards Grails 3 installations. For Grails 2.x refer to branch 1.x of the plugin.
+
+Add a dependency to `build.gradle`:
 
 ----
 ...
-plugins {
+dependencies {
     ...
-    runtime (':xframeoptions:1.0')
+    runtime ('org.grails.plugins:xframeoptions:1.1')
     ...
 }
 ...
@@ -26,25 +28,36 @@ header `X-Frame-Options` with the value `DENY`.
 
 == Configuration
 
-The plugin is configured through `grails-app/conf/Config.groovy`.
+The plugin is configured through `grails-app/conf/application.yml`.
 
 We can limit the URL pattern the filter is applied to:
 
 ----
-grails.plugin.xframeoptions.urlPattern = '/path/*'
+grails:
+    plugin:
+        xframeoptions:
+            urlPattern: /path/*
 ----
 
 We can also set multiple patterns:
 
 ----
-grails.plugin.xframeoptions.urlPattern = ['/path/*', '/other/*']
+grails:
+    plugin:
+        xframeoptions:
+            urlPattern:
+                - /path/*
+                - /other/*
 ----
 
 We can set different header values based on the configuration.
 To set the header value `DENY` we must use the following configuration:
 
 ----
-grails.plugin.xframeoptions.deny = true
+grails:
+    plugin:
+        xframeoptions:
+            deny: true
 ----
 
 This is also the default value if no configuration is provided or no configuration options
@@ -53,19 +66,28 @@ are set.
 To set the header value `SAMEORIGIN` we must use the following configuration:
 
 ----
-grails.plugin.xframeoptions.sameOrigin = true
+grails:
+    plugin:
+        xframeoptions:
+            sameOrigin: true
 ----
 
 To set the header value `ALLOW-FROM` with a URL we must use the following configuration:
 
 ----
-grails.plugin.xframeoptions.allowFrom = 'http://www.mrhaki.com'
+grails:
+    plugin:
+        xframeoptions:
+            allowFrom: http://www.mrhaki.com
 ----
 
 To disable the filter we must use the following configuration option:
 
 ----
-grails.plugin.xframeoptions.enabled = false
+grails:
+    plugin:
+        xframeoptions:
+            enabled: false
 ----
 
 The filter is enabled by default and will use the `DENY` header value.
