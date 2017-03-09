@@ -23,13 +23,13 @@ class XFrameOptionsConfiguration {
 
     XFrameOptionsConfiguration() {}
 
-    XFrameOptionsConfiguration(Config co) {
-        final String preffix = 'grails.plugin.xframeoptions'
-        enabled = co.getProperty("${preffix}.enabled", Boolean, DEFAULT_ENABLED)
-        deny = co.getProperty("${preffix}.deny", Boolean, DEFAULT_DENY)
-        sameOrigin = co.getProperty("${preffix}.sameOrigin", Boolean, DEFAULT_SAME_ORIGIN)
-        allowFrom = co.getProperty("${preffix}.allowFrom", String, DEFAULT_ALLOW_FROM)
-        urlPattern = co.getProperty("${preffix}.urlPattern", String, DEFAULT_URL_PATTERN)
+    XFrameOptionsConfiguration(Config config) {
+        final String prefix = 'grails.plugin.xframeoptions'
+        enabled = config.getProperty("${prefix}.enabled", Boolean, DEFAULT_ENABLED)
+        deny = config.getProperty("${prefix}.deny", Boolean, DEFAULT_DENY)
+        sameOrigin = config.getProperty("${prefix}.sameOrigin", Boolean, DEFAULT_SAME_ORIGIN)
+        allowFrom = config.getProperty("${prefix}.allowFrom", String, DEFAULT_ALLOW_FROM)
+        urlPattern = config.getProperty("${prefix}.urlPattern", String, DEFAULT_URL_PATTERN)
     }
 
     boolean isFilterEnabled() {

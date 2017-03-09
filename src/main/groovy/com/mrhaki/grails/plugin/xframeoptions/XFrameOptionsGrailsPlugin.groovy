@@ -2,8 +2,6 @@ package com.mrhaki.grails.plugin.xframeoptions
 
 import com.mrhaki.grails.plugin.xframeoptions.config.XFrameOptionsConfiguration
 import com.mrhaki.grails.plugin.xframeoptions.web.XFrameOptionsFilter
-import grails.config.Config
-import grails.core.support.GrailsConfigurationAware
 import grails.plugins.Plugin
 import groovy.util.logging.Slf4j
 import org.springframework.boot.web.servlet.FilterRegistrationBean
