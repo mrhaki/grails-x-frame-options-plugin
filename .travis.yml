@@ -1,4 +1,19 @@
 language: groovy
+
+sudo: false # run on container-based infrastructure
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.m2/repositories/
+
+before_script:
+- rm -rf target
+script: ./ci/bin/travis-build.sh
+
 env:
   global:
   - secure: dLAji83YQKsiz+5awP9Mbdq9nxF1qJ3xvEyyNdYXt29vNnj6gq4jzY2zZTkey3dhMn0lmxpmKrSPzmq/j3GzgdmouvQbqiYaBjphHPSgkNedzqdhruPyJqdEOgA7/MDG3vLBni9XV59h8bq6vvRV7rM9C7mBYk8yCRt02yr5jn4=
