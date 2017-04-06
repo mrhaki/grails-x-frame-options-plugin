@@ -15,7 +15,6 @@ apply plugin:"eclipse"
 apply plugin:"idea"
 apply plugin:"org.grails.grails-plugin"
 apply plugin:"org.grails.grails-plugin-publish"
-apply plugin:"org.grails.grails-gsp"
 
 
 repositories {
@@ -34,7 +33,6 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"
-    compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-starter-tomcat"
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
@@ -60,5 +58,5 @@ grailsPublish {
     }
     title = "X-Frame-Options Plugin"
     desc = "Servlet filter that adds a X-FRAME-OPTIONS response header"
-    developers = [mrhaki:"Hubert A. Klein Ikkink", sergio:"Sergio del Amo Caballero"]
+    developers = [mrhaki:"Hubert A. Klein Ikkink", sergio:"Sergio del Amo Caballero", sbglasius: "Søren Berg Glasius"]
 }

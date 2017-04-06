@@ -60,4 +60,8 @@ class XFrameOptionsConfiguration {
 
         return DENY
     }
+
+    List<String> getUrlPatterns() {
+        urlPattern.tokenize(',')
+    }
 }
