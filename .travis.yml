@@ -11,7 +11,7 @@ cache:
     - $HOME/.m2/repositories/
 
 before_script:
-- rm -rf target
+  - rm -rf target
 script: ./ci/bin/travis-build.sh
 
 env:
