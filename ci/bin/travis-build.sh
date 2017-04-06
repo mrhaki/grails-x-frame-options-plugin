@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 set -e
+./gradlew --version
+./gradlew dependencies
 ./gradlew clean check assemble --stacktrace
 
 EXIT_STATUS=0
