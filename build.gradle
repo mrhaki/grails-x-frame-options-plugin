@@ -8,7 +8,7 @@ buildscript {
     }
 }
 
-version "1.1.1"
+version "1.1.2"
 group "org.grails.plugins"
 
 apply plugin:"eclipse"
@@ -16,10 +16,10 @@ apply plugin:"idea"
 apply plugin:"org.grails.grails-plugin"
 apply plugin:"org.grails.grails-plugin-publish"
 
-
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    jcenter()
 }
 
 dependencyManagement {
@@ -46,11 +46,12 @@ bootRun {
 }
 // enable if you wish to package this plugin as a standalone application
 bootRepackage.enabled = false
+findMainClass.enabled = false
 
 grailsPublish {
-    if (project.hasProperty('bintrayUser')) {
-        user = project.property('bintrayUser')
-        key = project.property('bintrayKey')
+    if (System.getenv('BINTRAY_USER') || project.hasProperty('bintrayUser')) {
+        user = System.getenv('BINTRAY_USER') ?: project.property('bintrayUser')
+        key = System.getenv('BINTRAY_KEY') ?: project.property('bintrayKey')
     }
     githubSlug = 'mrhaki/grails-x-frame-options-plugin'
     license {
