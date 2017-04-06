@@ -52,5 +52,5 @@ plugin.xml
 *.sha1
 
 .DS_Store
-/build
-/.gradle
+build/
+.gradle/

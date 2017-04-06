@@ -9,17 +9,15 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean
 @Slf4j
 class XFrameOptionsGrailsPlugin extends Plugin {
 
-    // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.2.6 > *"
-    // resources that are excluded from plugin packaging
-    def pluginExcludes = [
-        "grails-app/views/error.gsp"
-    ]
 
     def title = 'X-Frame-Options Plugin'
     def author = 'Hubert A. Klein Ikkink aka mrhaki'
     def authorEmail = "h.kleinikkink@gmail.com"
-    def developers = [name: "Sergio del Amo Caballero", email: "delamos@objectcomputing.com"]
+    def developers = [
+            [name: "Sergio del Amo Caballero", email: "delamos@objectcomputing.com"],
+            [name: "Søren Berg Glasius", email: "soeren@glasius.dk"],
+    ]
     def description = 'Servlet filter that adds a X-FRAME-OPTIONS response header.'
 
     def profiles = ['web']
@@ -32,42 +30,18 @@ class XFrameOptionsGrailsPlugin extends Plugin {
 
     def scm = [url: "https://github.com/mrhaki/grails-x-frame-options-plugin/"]
 
-    Closure doWithSpring() { {->
-            def application = grailsApplication
-            def config = application.config
+    Closure doWithSpring() {
+        { ->
             def xFrameOptionsConfiguration = new XFrameOptionsConfiguration(config)
             if (xFrameOptionsConfiguration.filterEnabled) {
                 final String value = xFrameOptionsConfiguration.determineHeaderValue()
                 log.debug "Setting X-Frame-Options header to $value"
                 xFrameOptionsFilter(FilterRegistrationBean) {
                     filter = bean(XFrameOptionsFilter, value)
-                    urlPatterns = xFrameOptionsConfiguration.urlPattern.tokenize(',')
+                    urlPatterns = xFrameOptionsConfiguration.urlPatterns
                     order = FilterRegistrationBean.LOWEST_PRECEDENCE
                 }
             }
         }
-    }
-
-    void doWithDynamicMethods() {
-        // TODO Implement registering dynamic methods to classes (optional)
-    }
-
-    void doWithApplicationContext() {
-        // TODO Implement post initialization spring config (optional)
-    }
-
-    void onChange(Map<String, Object> event) {
-        // TODO Implement code that is executed when any artefact that this plugin is
-        // watching is modified and reloaded. The event contains: event.source,
-        // event.application, event.manager, event.ctx, and event.plugin.
-    }
-
-    void onConfigChange(Map<String, Object> event) {
-        // TODO Implement code that is executed when the project configuration changes.
-        // The event is the same as for 'onChange'.
-    }
-
-    void onShutdown(Map<String, Object> event) {
-        // TODO Implement code that is executed when the application shuts down (optional)
     }
 }

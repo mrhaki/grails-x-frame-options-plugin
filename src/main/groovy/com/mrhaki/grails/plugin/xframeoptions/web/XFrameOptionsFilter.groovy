@@ -1,14 +1,14 @@
-package com.mrhaki.grails.plugin.xframeoptions.web;
+package com.mrhaki.grails.plugin.xframeoptions.web
 
-import static com.mrhaki.grails.plugin.xframeoptions.web.XFrameOptionsHeaderValues.DENY;
+import groovy.transform.CompileStatic
+import org.springframework.web.filter.OncePerRequestFilter
 
-import java.io.IOException;
-import java.lang.Override;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.springframework.web.filter.OncePerRequestFilter;
+import javax.servlet.FilterChain
+import javax.servlet.ServletException
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
+
+import static com.mrhaki.grails.plugin.xframeoptions.web.XFrameOptionsHeaderValues.DENY
 
 /**
  * <p>
@@ -21,29 +21,29 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * </p>
  *
  */
-public class XFrameOptionsFilter extends OncePerRequestFilter {
+@CompileStatic
+class XFrameOptionsFilter extends OncePerRequestFilter {
 
     /**
      * Response header name.
      */
-    private static final String HEADER_NAME = "X-Frame-Options";
-    private static final String HEADER_VALUE_PARAM = "headerValue";
+    private static final String HEADER_NAME = "X-Frame-Options"
 
     /**
      * Default value to be used when nothing is defined in the configuration.
      */
-    private static final String DEFAULT_MODE = DENY;
+    private static final String DEFAULT_MODE = DENY
 
     /**
      * Store mode which is the header value to be used.
      */
-    private final String headerValue;
+    String headerValue
 
     /**
      * Set defualt header value {@link }
      */
-    public XFrameOptionsFilter() {
-        this(DEFAULT_MODE);
+    XFrameOptionsFilter() {
+        this(DEFAULT_MODE)
     }
 
     /**
@@ -51,8 +51,8 @@ public class XFrameOptionsFilter extends OncePerRequestFilter {
      *
      * @param headerValue Value for the header.
      */
-    public XFrameOptionsFilter(final String headerValue) {
-        this.headerValue = headerValue;
+    XFrameOptionsFilter(final String headerValue) {
+        this.headerValue = headerValue
     }
 
     /**
@@ -66,11 +66,8 @@ public class XFrameOptionsFilter extends OncePerRequestFilter {
      */
     @Override
     protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain) throws ServletException, IOException {
-        response.addHeader(HEADER_NAME, headerValue());
-        filterChain.doFilter(request, response);
+        response.addHeader(HEADER_NAME, headerValue)
+        filterChain.doFilter(request, response)
     }
 
-    private String headerValue() {
-        return headerValue;
-    }
 }

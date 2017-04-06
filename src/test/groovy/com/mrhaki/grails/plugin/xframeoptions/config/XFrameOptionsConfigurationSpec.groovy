@@ -51,4 +51,13 @@ class XFrameOptionsConfigurationSpec extends Specification {
         def config = new XFrameOptionsConfiguration()
         config.determineHeaderValue() == DENY
     }
+
+    def "urlPatterns must be derived right from urlPattern set by user"() {
+        given:
+        def config = new XFrameOptionsConfiguration()
+        config.urlPattern="/pattern1/**,/pattern2/**,/pattern3/specific/**"
+
+        expect:
+        config.urlPatterns == ['/pattern1/**','/pattern2/**','/pattern3/specific/**']
+    }
 }
