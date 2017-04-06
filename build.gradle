@@ -50,9 +50,9 @@ bootRun {
 bootRepackage.enabled = false
 
 grailsPublish {
-    if (project.hasProperty('bintrayUser')) {
-        user = project.property('bintrayUser')
-        key = project.property('bintrayKey')
+    if (System.getenv('BINTRAY_USER') || project.hasProperty('bintrayUser')) {
+        user = System.getenv('BINTRAY_USER') ?: project.property('bintrayUser')
+        key = System.getenv('BINTRAY_KEY') ?: project.property('bintrayKey')
     }
     githubSlug = 'mrhaki/grails-x-frame-options-plugin'
     license {

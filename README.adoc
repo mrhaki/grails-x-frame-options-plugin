@@ -1,3 +1,5 @@
+:plugin-version: 1.1.1
+
 == Grails X-Frame-Options Plugin
 
 Filter to set HTTP response header X-Frame-Options to defend against
@@ -13,11 +15,12 @@ These instructions are targeted towards Grails 3 installations. For Grails 2.x r
 
 Add a dependency to `build.gradle`:
 
+[subs="attributes"]
 ----
 ...
 dependencies {
     ...
-    runtime ('org.grails.plugins:x-frame-options:1.1.1')
+    runtime ('org.grails.plugins:x-frame-options:{plugin-version}')
     ...
 }
 ...
